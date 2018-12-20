@@ -1,0 +1,29 @@
+<div class="topBar"></div>
+
+<ion-content *ngIf="!showOffers$" class="card-background-page">
+
+  <ion-card ion-category *ngFor="let category of categories$">
+    <div (click)="getOffers($event)">
+    <img src="../../assets/imgs/{{category.categoryName}}-{{category.categoryId}}.png"/>
+    <div class="card-title">{{category.categoryName}}</div>
+    <div class="card-title">{{category.categoryId}}</div>
+  </div>
+  </ion-card>  
+</ion-content>
+
+
+<div>
+    <img *ngIf="showOffers$" (click)="showCategories($event)" class="backBtn" src="../../assets/imgs/icon-28-512.png"/>
+</div>
+<ion-card *ngIf="showOffers$">
+    <img src="img/nin-live.png"/>
+    <ion-card-content>
+      <ion-card-title>
+        Nine Inch Nails Live
+        </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely
+        responsible for bringing the music to a mass audience.
+      </p>
+    </ion-card-content>
+  </ion-card>
