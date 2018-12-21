@@ -6,7 +6,7 @@ import { DataService } from './data.service';
 import { Geolocation } from '@ionic-native/geolocation';
 
 
-import { MyApp } from './app.component';
+import { NearByOffers } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    MyApp,
+    NearByOffers,
     HomePage,
     ListPage
   ],
@@ -25,11 +25,11 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     CommonModule,
     HttpClientModule,  
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(NearByOffers),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    NearByOffers,
     HomePage,
     ListPage
   ],
