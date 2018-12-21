@@ -9,8 +9,11 @@ import { DataService } from '../../app/data.service';
 
 
 export class HomePage implements OnInit{
-  categories$: Object;
+  categories$: Array<any>;
   showOffers$: Boolean = false;
+  locationOffers$: Array<any>;
+  offersList$:Array<any>; 
+  offers$:Array<any>
 
   constructor(public navCtrl: NavController, 
               private data: DataService) {
@@ -18,13 +21,42 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit() {
+    var categoryArr = [];
+    var offerArr = [];
     this.data.getCategories().subscribe(
-      data => this.categories$ = data
+      data => {
+        //this.categories$ = data; 
+        this.locationOffers$ = <any>data[5].details;
+        this.locationOffers$.forEach(function(location) {
+         
+          if(location.lat == 12.7882939 && location.long == 77.6511074){
+            offerArr = location.offerDetails;
+            location.offerDetails.forEach(function(offer) {
+              categoryArr.indexOf(offer.categoryName)
+              if(categoryArr.indexOf(offer.categoryName) === -1){
+                categoryArr.push(offer.categoryName)
+              }
+              });
+          }
+
+      });
+        if(categoryArr.length){
+          this.categories$ = categoryArr;
+          this.offersList$ = offerArr;
+        }
+      }
     );
   }
 
-  getOffers(event){
+  getOffers(event,categoryName){
+    console.log(event, categoryName)
     this.showOffers$ = true;
+    if(this.offersList$ && this.offersList$.length) {
+      this.offers$ = this.offersList$.filter(category => category.categoryName === categoryName)
+    }
+    
+      
+    
   }
 
   showCategories(event){

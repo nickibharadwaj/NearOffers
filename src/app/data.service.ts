@@ -7,6 +7,6 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getCategories() {
-    return this.http.get('https://api.myjson.com/bins/mg70w')
+    return this.http.get('https://api.myjson.com/bins/ncd7c')
   }
 }

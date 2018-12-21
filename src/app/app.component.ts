@@ -73,6 +73,7 @@ export class MyApp {
         'lang': res.coords.longitude
       }
 
+
       alert('location detected:' + res.coords.latitude +  res.coords.longitude);
 
     }).catch((error) => {
