@@ -29,7 +29,9 @@ export class HomePage implements OnInit{
         this.locationOffers$ = <any>data[5].details;
         this.locationOffers$.forEach(function(location) {
          
-          if(location.lat == 12.7882939 && location.long == 77.6511074){
+          let locationFromStorage = JSON.parse(localStorage.getItem('location'))
+
+          if(location.lat == locationFromStorage.lat && location.long == locationFromStorage.lang){
             offerArr = location.offerDetails;
             location.offerDetails.forEach(function(offer) {
               categoryArr.indexOf(offer.categoryName)

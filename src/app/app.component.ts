@@ -64,16 +64,12 @@ export class NearByOffers {
 
   getLocation() {
     this.geoLocation.getCurrentPosition().then((res) => {
-      // resp.coords.latitude
-      // resp.coords.longitude
-      //let location= 'lat'+ res.coords.latitude +'lang'+ res.coords.longitude;
-      // let location='lat '+res.coords.latitude+' lang '+res.coords.longitude;
       let location = {
         'lat': res.coords.latitude,
         'lang': res.coords.longitude
       }
 
-
+      localStorage.setItem('location' , JSON.stringify(location));
       alert('location detected:' + res.coords.latitude +  res.coords.longitude);
 
     }).catch((error) => {
